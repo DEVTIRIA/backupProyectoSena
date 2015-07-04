@@ -18,12 +18,12 @@
 	<security:authentication-manager>
 		<security:authentication-provider>
 			<security:jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select usuario,contrasena,enabled from usuario where usuario=?"
-				authorities-by-username-query="select usuario.usuario,rol.nombre 
-											from usuario
-											join usuario_rol on (usuario_rol.USUARIO_IDUSUARIO=usuario.IDUSUARIO)
-											join rol on (rol.IDROL=usuario_rol.ROL_IDROL)
-											where usuario.usuario=?" />
+				users-by-username-query="select USER_NICK,USER_PASS,USER_ENABLED from USER2 where USER_NICK=?"
+				authorities-by-username-query="select USER2.USER_NICK,ROL.ROL_NOMBRE 
+											from USER2
+											join INTER_USER_ROL on (INTER_USER_ROL.INTER1_USER=USER2.USER_USER)
+											join ROL on (ROL.ROL_ROL=INTER_USER_ROL.INTER1_ROL)
+											where USER2.USER_NICK=?" />
 		</security:authentication-provider>
 	</security:authentication-manager>
 
